@@ -1,106 +1,970 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Basic -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Master the Market – Beginner's Guide</title>
-  <meta name="description" content="100% free stock market education. Learn chart reading, technical analysis, and risk management. No buy/sell tips. For learning purpose only.">
-  <link rel="canonical" href="https://example.com/">
-
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>𝗧𝗥𝗔𝗗𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗞𝗔𝗥𝗢𝗟 — TWM_TERMINAL // v3.8</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1126938976439445');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1126938976439445&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
-  <!-- Favicons (optional) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Master the Market – Beginner's Guide">
-  <meta property="og:description" content="Learn charts & risk management. No buy/sell tips. 100% educational.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://example.com/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop">
-
-  <!-- Minimal CSS (inline for speed) -->
   <style>
-    :root{
-      --bg1:#0c0c1d;
-      --bg2:#1a1a2b;
-      --brand: #00f0ff;
-      --brand-2:#00f0ff;
-      --text:#ffffff;
-      --muted:#b5b5c3;
+    :root {
+      --bg-outer: #070b14;
+      --bg-grid: rgba(255, 255, 255, 0.035);
+      --bg-card: #0b101b;
+      --bg-card-inner: #0e1523;
+      --bg-footer: #080c15;
+      --border-card: #1d2638;
+      --border-gold: rgba(245, 166, 35, 0.35);
+      --gold: #f7a81b;
+      --gold-hover: #ffb733;
+      --gold-glow: rgba(247, 168, 27, 0.42);
+      --green: #16d18a;
+      --red: #f14646;
+      --cyan: #22b8cf;
+      --text-white: #f8fafc;
+      --text-muted: #7c899f;
+      --text-dim: #525f75;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{
-      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      background:
-        linear-gradient(135deg, rgba(0,0,0,.45), rgba(0,0,0,.45)),
-        url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1600&auto=format&fit=crop') no-repeat center/cover fixed;
-      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-      min-height:100vh;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .container{
-      max-width:520px; margin:0 auto; padding:24px 18px; text-align:center; min-height:100vh; display:flex; flex-direction:column; justify-content:center;
-      backdrop-filter: saturate(130%);
+
+    body {
+      background-color: var(--bg-outer);
+      background-image: 
+        linear-gradient(to right, var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--bg-grid) 1px, transparent 1px);
+      background-size: 38px 38px;
+      color: var(--text-white);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
     }
-    .badge{display:inline-block; font-size:.78rem; padding:6px 10px; border:1px solid #2a2a3a; border-radius:999px; color:#d6eaff; background:rgba(0,240,255,.08); margin-bottom:14px}
-    h1{font-size:1.9rem; line-height:1.2; margin:6px 0 10px; background:linear-gradient(90deg,var(--brand-2),var(--brand)); -webkit-background-clip:text; background-clip:text; color:transparent;}
-    .sub{font-size:1rem; color:var(--muted); margin:0 auto 16px; max-width:36ch}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(0,255,153,.07); border:1px dashed rgba(0,255,153,.35); color:#d8ffe9; font-size:.9rem; margin:6px 0 18px;
+
+    /* Top Live Stock Ticker */
+    .ticker-bar {
+      width: 100%;
+      background: #060911;
+      border-bottom: 1px solid #141c2c;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
-    ul.bullets{list-style:none; padding:0; margin:0 0 18px}
-    ul.bullets li{margin:8px 0; color:#e9eef9}
-    .cta{
-      display:inline-block; text-decoration:none; background:var(--brand); color:#041b14; padding:14px 18px; font-weight:700; border-radius:12px; box-shadow:0 0 0 0 rgba(0,255,153,.6); transform:translateZ(0);
-      transition:transform .15s ease;
-      animation:pulse 1.6s infinite;
+
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: tickerScroll 28s linear infinite;
     }
-    .cta:active{transform:scale(.98)}
-    @keyframes pulse{
-      0%{box-shadow:0 0 0 0 rgba(0,255,153,.55)}
-      70%{box-shadow:0 0 0 20px rgba(0,255,153,0)}
-      100%{box-shadow:0 0 0 0 rgba(0,255,153,0)}
+
+    .ticker-track:hover {
+      animation-play-state: paused;
     }
-    .fineprint{font-size:.86rem; color:var(--muted); margin:18px auto 0; max-width:44ch}
-    .disclaimer{font-size:.78rem; color:#9aa4b2; margin:18px auto 0; max-width:50ch}
-    .safe{display:flex; align-items:center; justify-content:center; gap:8px; margin-top:14px; color:#a1ffd6; font-size:.9rem}
-    .shield{width:18px; height:18px; display:inline-block; border-radius:4px; background:linear-gradient(135deg,#0df,#0f9)}
-    footer{opacity:.8; margin-top:22px; font-size:.78rem; color:#9aa4b2}
+
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 18px;
+      border-right: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .ticker-sym {
+      color: #e2e8f0;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ticker-vals {
+      display: inline-flex;
+      flex-direction: column;
+      line-height: 1.05;
+      font-size: 10px;
+    }
+
+    .up { color: var(--green); }
+    .down { color: var(--red); }
+
+    /* Main Terminal Card */
+    .main-wrapper {
+      width: 100%;
+      max-width: 430px;
+      padding: 24px 14px 36px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .terminal-card {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 14px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(247, 168, 27, 0.08);
+      overflow: hidden;
+    }
+
+    /* Terminal Top Header */
+    .terminal-header {
+      background: #080c15;
+      border-bottom: 1px solid #161f30;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-title-group {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    .terminal-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: 0.6px;
+    }
+
+    .window-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .w-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+    .w-yellow { background: #f59e0b; }
+    .w-orange { background: #ea580c; }
+    .w-red { background: #ef4444; }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 26px 20px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .logo-box-wrap {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .logo-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      background: #0d1320;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 24px rgba(247, 168, 27, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .logo-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .pro-badge {
+      position: absolute;
+      bottom: -7px;
+      right: -12px;
+      background: #14b87a;
+      color: #04130d;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .brand-name {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      color: #ffffff;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    /* Pills Row */
+    .pills-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+
+    .pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      letter-spacing: 0.3px;
+    }
+
+    .pill-gold {
+      background: rgba(247, 168, 27, 0.1);
+      border: 1px solid rgba(247, 168, 27, 0.35);
+      color: var(--gold);
+    }
+
+    .pill-red {
+      background: rgba(241, 70, 70, 0.12);
+      border: 1px solid rgba(241, 70, 70, 0.35);
+      color: #f87171;
+    }
+
+    .pill-red .live-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulseRed 1.4s infinite;
+    }
+
+    @keyframes pulseRed {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .pill-cyan {
+      background: rgba(34, 184, 207, 0.1);
+      border: 1px solid rgba(34, 184, 207, 0.35);
+      color: #38bdf8;
+    }
+
+    /* Primary CTA Button */
+    .cta-btn {
+      width: 100%;
+      background: var(--gold);
+      color: #0a0e17;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13.5px;
+      letter-spacing: 0.4px;
+      padding: 15px 18px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 26px var(--gold-glow);
+      transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .cta-btn:hover {
+      background: var(--gold-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 32px rgba(247, 168, 27, 0.58);
+    }
+
+    .cta-btn:active {
+      transform: translateY(0);
+    }
+
+    .tg-icon-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #0a0e17;
+      color: var(--gold);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Stats Row */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid #161f30;
+      border-bottom: 1px solid #161f30;
+      padding: 16px 10px;
+      background: rgba(8, 12, 21, 0.45);
+    }
+
+    .stat-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .stat-box:not(:last-child) {
+      border-right: 1px solid #182235;
+    }
+
+    .stat-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .stat-gold { color: var(--gold); }
+    .stat-white { color: #ffffff; }
+    .stat-green { color: var(--green); }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    /* Live Pattern Analysis Section */
+    .pattern-section {
+      padding: 18px 18px 14px;
+    }
+
+    .pattern-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      font-weight: 600;
+    }
+
+    .pattern-left {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #8b9bb4;
+      letter-spacing: 0.5px;
+    }
+
+    .pattern-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .pattern-right {
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .chart-box {
+      width: 100%;
+      height: 76px;
+      background: #080c15;
+      border: 1px solid #151e2e;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #candleCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Feature Cards List */
+    .features-list {
+      padding: 4px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .feature-card {
+      background: #0e1422;
+      border: 1px solid #192336;
+      border-radius: 12px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(247, 168, 27, 0.45);
+      background: #121a2b;
+      transform: translateX(2px);
+    }
+
+    .feature-left {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .icon-gold {
+      background: rgba(247, 168, 27, 0.12);
+      color: var(--gold);
+    }
+
+    .icon-green {
+      background: rgba(22, 209, 138, 0.12);
+      color: var(--green);
+    }
+
+    .icon-cyan {
+      background: rgba(34, 184, 207, 0.12);
+      color: #29b6f6;
+    }
+
+    .feature-text h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 3px;
+    }
+
+    .feature-text p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .chevron-right {
+      color: #4b5a72;
+      transition: color 0.2s ease;
+    }
+
+    .feature-card:hover .chevron-right {
+      color: var(--gold);
+    }
+
+    /* Footer Section */
+    .terminal-footer {
+      background: var(--bg-footer);
+      border-top: 1px solid #161f30;
+      padding: 15px 18px 16px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 8.5px;
+      color: #546278;
+      letter-spacing: 0.4px;
+    }
+
+    /* Modal Popup for Info Links */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(3, 6, 12, 0.85);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      padding: 16px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 390px;
+      background: #0d1320;
+      border: 1px solid #222e44;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1b2538;
+      padding-bottom: 10px;
+      margin-bottom: 12px;
+    }
+
+    .modal-head h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      color: var(--gold);
+      letter-spacing: 0.6px;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 18px;
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-body {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #cbd5e1;
+    }
   </style>
 </head>
 <body>
-  <main class="container">
-    <span class="badge">100% Educational • Policy Safe</span>
-    <h1>Master the Market – Beginner's Guide</h1>
-    <p class="sub">Master the basics with beginner-friendly lessons</p>
 
-    <div class="pill">🚫 No Buy/Sell Tips • ✅ For Learning Purpose Only</div>
+  <!-- Top Scrolling Market Ticker -->
+  <div class="ticker-bar">
+    <div class="ticker-track" id="tickerTrack">
+      <div class="ticker-item">
+        <span class="ticker-sym">TCS</span>
+        <span class="ticker-vals"><span class="up">4,150.00</span><span class="up">+0.80%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">INFY</span>
+        <span class="ticker-vals"><span class="down">1,880.20</span><span class="down">-0.65%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">TATAMOTORS</span>
+        <span class="ticker-vals"><span class="up">985.40</span><span class="up">+3.12%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f7a81b" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          NIFTY
+        </span>
+        <span class="ticker-vals"><span class="up">22,510.40</span><span class="up">+1.35%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">BANKNIFTY</span>
+        <span class="ticker-vals"><span class="up">48,920.15</span><span class="up">+1.10%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">SENSEX</span>
+        <span class="ticker-vals"><span class="up">74,120.80</span><span class="up">+0.95%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">RELIANCE</span>
+        <span class="ticker-vals"><span class="down">2,912.00</span><span class="down">-0.42%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">HDFC BANK</span>
+        <span class="ticker-vals"><span class="up">1,695.50</span><span class="up">+2.30%</span></span>
+      </div>
+      <!-- Duplicate set for seamless infinite scroll -->
+      <div class="ticker-item">
+        <span class="ticker-sym">TCS</span>
+        <span class="ticker-vals"><span class="up">4,150.00</span><span class="up">+0.80%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">INFY</span>
+        <span class="ticker-vals"><span class="down">1,880.20</span><span class="down">-0.65%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">TATAMOTORS</span>
+        <span class="ticker-vals"><span class="up">985.40</span><span class="up">+3.12%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#f7a81b" stroke-width="2.5"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+          NIFTY
+        </span>
+        <span class="ticker-vals"><span class="up">22,510.40</span><span class="up">+1.35%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">BANKNIFTY</span>
+        <span class="ticker-vals"><span class="up">48,920.15</span><span class="up">+1.10%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">SENSEX</span>
+        <span class="ticker-vals"><span class="up">74,120.80</span><span class="up">+0.95%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">RELIANCE</span>
+        <span class="ticker-vals"><span class="down">2,912.00</span><span class="down">-0.42%</span></span>
+      </div>
+      <div class="ticker-item">
+        <span class="ticker-sym">HDFC BANK</span>
+        <span class="ticker-vals"><span class="up">1,695.50</span><span class="up">+2.30%</span></span>
+      </div>
+    </div>
+  </div>
 
-    <ul class="bullets" aria-label="What you'll learn">
-      <li>• Chart basics & risk rules (no return promises)</li>
-      <li>• How to read trends without speculation</li>
-      <li>• Market discipline & common mistakes</li>
-    </ul>
+  <!-- Main Container -->
+  <div class="main-wrapper">
+    <div class="terminal-card">
+      
+      <!-- Window Header -->
+      <div class="terminal-header">
+        <div class="terminal-title-group">
+          <span class="status-dot"></span>
+          <span class="terminal-title">TWM_TERMINAL // v3.8</span>
+        </div>
+        <div class="window-dots">
+          <span class="w-dot w-yellow"></span>
+          <span class="w-dot w-orange"></span>
+          <span class="w-dot w-red"></span>
+        </div>
+      </div>
 
-    <!-- CTA goes to a page-specific bridge -->
-    <a class="cta" href="bridge-lp77.html" rel="nofollow">Start Learning</a>
+      <!-- Hero Brand Block -->
+      <div class="hero-section">
+        <div class="logo-box-wrap">
+          <div class="logo-box">
+            <!-- Apna Image URL neeche src="..." mein daalein -->
+            <img src="karol.jpg" alt="𝗧𝗥𝗔𝗗𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗞𝗔𝗥𝗢𝗟 Logo" />
+          </div>
+          <span class="pro-badge">✓ PRO</span>
+        </div>
 
-    <div class="safe"><span class="shield" aria-hidden="true"></span> Ad Policy Friendly Content</div>
+        <h1 class="brand-name">𝗧𝗥𝗔𝗗𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗞𝗔𝗥𝗢𝗟</h1>
+        <p class="brand-sub">PRECISION MARKET INTELLIGENCE</p>
 
-    <p class="fineprint">We focus on concepts & frameworks suitable for beginners.</p>
-    <p class="disclaimer"><em>This website is for educational purposes only. We do not provide investment, trading, or financial advice.</em></p>
+        <div class="pills-row">
+          <span class="pill pill-gold">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/></svg>
+            VIP STRATEGY
+          </span>
+          <span class="pill pill-red">
+            <span class="live-dot"></span>
+            LIVE SIGNALS
+          </span>
+          <span class="pill pill-cyan">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+            100K+ MEMBERS
+          </span>
+        </div>
 
-    <footer>© <span id="y"></span> Market Basics Learning Hub</footer>
-  </main>
+        <a href="https://t.me/+u-lZEW5D1Ck5ZGJl" target="_blank" rel="noopener noreferrer" class="cta-btn" onclick="trackTelegramJoin()">
+          <span class="tg-icon-circle">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          </span>
+          JOIN FREE TELEGRAM CHANNEL
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- 3-Column Metrics -->
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="stat-val stat-gold">98.2%</div>
+          <div class="stat-label">ACCURACY</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val stat-white">100K+</div>
+          <div class="stat-label">TRADERS</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val stat-green">24/7</div>
+          <div class="stat-label">ANALYSIS</div>
+        </div>
+      </div>
+
+      <!-- Live Pattern Analysis Candlestick Graph -->
+      <div class="pattern-section">
+        <div class="pattern-header">
+          <span class="pattern-left">
+            <span class="pattern-dot"></span>
+            LIVE PATTERN ANALYSIS
+          </span>
+          <span class="pattern-right">▲ +14.8% PROFIT MOMENTUM</span>
+        </div>
+        <div class="chart-box">
+          <canvas id="candleCanvas"></canvas>
+        </div>
+      </div>
+
+      <!-- Feature Cards -->
+      <div class="features-list">
+        <a href="https://t.me/+u-lZEW5D1Ck5ZGJl" target="_blank" rel="noopener noreferrer" class="feature-card" onclick="trackTelegramJoin()">
+          <div class="feature-left">
+            <div class="feature-icon icon-gold">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11 2v9h9a9 9 0 1 1-9-9zm2 0a9 9 0 0 1 9 9h-9V2z"/></svg>
+            </div>
+            <div class="feature-text">
+              <h3>Nifty &amp; BankNifty Strategy</h3>
+              <p>DAILY ACCURATE BREAKOUT LEVELS</p>
+            </div>
+          </div>
+          <svg class="chevron-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+
+        <a href="https://t.me/+u-lZEW5D1Ck5ZGJl" target="_blank" rel="noopener noreferrer" class="feature-card" onclick="trackTelegramJoin()">
+          <div class="feature-left">
+            <div class="feature-icon icon-green">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div class="feature-text">
+              <h3>Real-Time Trade Signals</h3>
+              <p>INSTANT ENTRY &amp; EXIT ALERTS</p>
+            </div>
+          </div>
+          <svg class="chevron-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+
+        <a href="https://t.me/+u-lZEW5D1Ck5ZGJl" target="_blank" rel="noopener noreferrer" class="feature-card" onclick="trackTelegramJoin()">
+          <div class="feature-left">
+            <div class="feature-icon icon-cyan">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.47L5.18 13.75 5 13.65v3.85c0 1.93 3.13 3.5 7 3.5s7-1.57 7-3.5v-3.85l-7 3.82z"/></svg>
+            </div>
+            <div class="feature-text">
+              <h3>Master Trader Education</h3>
+              <p>PRICE ACTION &amp; RISK MANAGEMENT</p>
+            </div>
+          </div>
+          <svg class="chevron-right" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </a>
+      </div>
+
+      <!-- Footer -->
+      <footer class="terminal-footer">
+        <div class="footer-links">
+          <button type="button" class="footer-link" onclick="openModal('ABOUT')">[ABOUT]</button>
+          <button type="button" class="footer-link" onclick="openModal('TERMS')">[TERMS]</button>
+          <button type="button" class="footer-link" onclick="openModal('DISCLAIMER')">[DISCLAIMER]</button>
+          <button type="button" class="footer-link" onclick="openModal('CONTACT')">[CONTACT]</button>
+        </div>
+        <div class="footer-bottom">
+          <span>FOR EDUCATIONAL PURPOSES ONLY</span>
+          <span>ADV BY D.A.E.</span>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- Info Modal -->
+  <div class="modal-overlay" id="infoModal" onclick="closeModalOnBg(event)">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h4 id="modalTitle">DISCLAIMER</h4>
+        <button type="button" class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalContent"></div>
+    </div>
+  </div>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // Pixel Lead Event
+    function trackTelegramJoin() {
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+    }
+
+    // Candlestick Chart Renderer matching screenshot + live subtle animation
+    const canvas = document.getElementById('candleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const candles = [
+      { type: 'red',   top: 24, bodyTop: 31, bodyH: 26, bottom: 64 },
+      { type: 'green', top: 14, bodyTop: 22, bodyH: 34, bottom: 66 },
+      { type: 'green', top: 28, bodyTop: 35, bodyH: 22, bottom: 65 },
+      { type: 'red',   top: 24, bodyTop: 31, bodyH: 26, bottom: 64 },
+      { type: 'green', top: 15, bodyTop: 23, bodyH: 33, bottom: 65 },
+      { type: 'green', top: 9,  bodyTop: 17, bodyH: 39, bottom: 64 },
+      { type: 'red',   top: 34, bodyTop: 40, bodyH: 18, bottom: 65 },
+      { type: 'green', top: 52, bodyTop: 55, bodyH: 12, bottom: 68 }
+    ];
+
+    let phase = 0;
+
+    function drawCandles() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      if (canvas.width !== rect.width * dpr || canvas.height !== rect.height * dpr) {
+        canvas.width = rect.width * dpr;
+        canvas.height = rect.height * dpr;
+      }
+      ctx.save();
+      ctx.scale(dpr, dpr);
+      ctx.clearRect(0, 0, rect.width, rect.height);
+
+      const count = candles.length;
+      const padX = 24;
+      const step = (rect.width - padX * 2) / (count - 1);
+
+      candles.forEach((c, i) => {
+        const x = padX + i * step;
+        const pulse = Math.sin(phase + i * 0.8) * 1.8;
+        const color = c.type === 'green' ? '#16d18a' : '#f14646';
+
+        // Wick
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath();
+        ctx.moveTo(x, c.top - pulse);
+        ctx.lineTo(x, c.bottom);
+        ctx.stroke();
+
+        // Body
+        ctx.fillStyle = color;
+        const bodyW = i === count - 1 ? 2.5 : 8.5;
+        ctx.fillRect(x - bodyW / 2, c.bodyTop - pulse, bodyW, c.bodyH + pulse);
+      });
+
+      ctx.restore();
+      phase += 0.04;
+      requestAnimationFrame(drawCandles);
+    }
+
+    drawCandles();
+
+    // Modal Content Data
+    const modalData = {
+      ABOUT: {
+        title: 'ABOUT // 𝗧𝗥𝗔𝗗𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗞𝗔𝗥𝗢𝗟',
+        body: '𝗧𝗥𝗔𝗗𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗞𝗔𝗥𝗢𝗟 provides educational market insights, technical chart breakdowns, and Nifty/BankNifty price action concepts via our official Telegram community.'
+      },
+      TERMS: {
+        title: 'TERMS OF USE',
+        body: 'All content, chart patterns, and community discussions shared inside TWM_TERMINAL and our Telegram channel are strictly for educational and informational learning purposes.'
+      },
+      DISCLAIMER: {
+        title: 'RISK & PLATFORM DISCLAIMER',
+        body: 'Trading in financial markets involves substantial risk. We are not SEBI-registered investment advisors. All shared setups are for educational purposes only. This site is not affiliated with or endorsed by Meta Platforms, Inc.'
+      },
+      CONTACT: {
+        title: 'CONTACT & SUPPORT',
+        body: 'For community inquiries or support, connect directly with our admin team through the official 𝗧𝗥𝗔𝗗𝗜𝗡𝗚 𝗪𝗜𝗧𝗛 𝗞𝗔𝗥𝗢𝗟 Telegram channel.'
+      }
+    };
+
+    function openModal(key) {
+      const item = modalData[key];
+      if (!item) return;
+      document.getElementById('modalTitle').textContent = item.title;
+      document.getElementById('modalContent').textContent = item.body;
+      document.getElementById('infoModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('infoModal').classList.remove('active');
+    }
+
+    function closeModalOnBg(e) {
+      if (e.target.id === 'infoModal') closeModal();
+    }
   </script>
 </body>
 </html>
